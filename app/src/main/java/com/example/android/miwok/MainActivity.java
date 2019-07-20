@@ -18,8 +18,11 @@ package com.example.android.miwok;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ArrayList<String> list = new ArrayList();
+        for (Integer i = 0; i < 10; i++) {
+            list.add(i.toString());
+        }
+        for (String str : list) {
+            Log.d("check list", str);
+        }
 
     }
 }
