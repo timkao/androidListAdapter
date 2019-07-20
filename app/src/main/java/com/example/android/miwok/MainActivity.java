@@ -43,13 +43,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ArrayList<String> list = new ArrayList();
-        for (Integer i = 0; i < 10; i++) {
-            list.add(i.toString());
-        }
-        for (String str : list) {
-            Log.d("check list", str);
-        }
 
     }
 }
