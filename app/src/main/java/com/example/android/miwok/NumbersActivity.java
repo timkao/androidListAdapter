@@ -15,12 +15,12 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        ArrayList<String> list = new ArrayList();
-        for (Integer i = 0; i < 10; i++) {
-            list.add(i.toString());
-        }
+        ArrayList<Word> list = new ArrayList();
+        list.add(new Word("one", "1"));
+        list.add(new Word("two", "2"));
+        list.add(new Word("three", "3"));
+        WordAdapter adapter = new WordAdapter(this, list);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
     }
