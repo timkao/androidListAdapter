@@ -4,10 +4,12 @@ public class Word {
 
     private String miworkTranslation;
     private String defaultTranslation;
+    private int imageSrc;
 
-    public Word(String miwork, String english) {
+    public Word(String miwork, String english, int uriSrc) {
         miworkTranslation = miwork;
         defaultTranslation = english;
+        imageSrc = uriSrc;
     }
 
     public String getMiworkTranslation() {
@@ -16,5 +18,9 @@ public class Word {
 
     public String getDefaultTranslation() {
         return defaultTranslation;
+    }
+
+    public int getImageSrc() {
+        return imageSrc;
     }
 }
