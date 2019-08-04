@@ -43,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TextView pharseView = (TextView) findViewById(R.id.phrases);
+        pharseView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PhrasesActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
