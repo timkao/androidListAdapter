@@ -2,6 +2,7 @@ package com.example.android.miwok;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -50,6 +51,16 @@ public class WordAdapter extends ArrayAdapter<Word> {
             imgView.setImageResource(currentWord.getImageSrc());
         } else {
             imgView.setVisibility(View.INVISIBLE);
+        }
+
+        if (currentWord.hasAudSrc()) {
+            final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), currentWord.getAudSrc());
+            listItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mediaPlayer.start();
+                }
+            });
         }
 
         return listItemView;
