@@ -37,7 +37,11 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         miTextView.setText(currentWord.getMiworkTranslation());
         enTextView.setText(currentWord.getDefaultTranslation());
-        imgView.setImageResource(currentWord.getImageSrc());
+        if (currentWord.hasImageSrc()) {
+            imgView.setImageResource(currentWord.getImageSrc());
+        } else {
+            imgView.setVisibility(View.INVISIBLE);
+        }
 
         return listItemView;
     }

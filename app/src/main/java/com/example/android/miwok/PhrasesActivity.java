@@ -16,12 +16,12 @@ public class PhrasesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrases);
 
-        ArrayList<String> phrases = new ArrayList<>();
-        phrases.add("porgramming in c");
-        phrases.add("learn python in hard way");
-        phrases.add("spring boot in Java");
+        ArrayList<Word> phrases = new ArrayList<>();
+        phrases.add(new Word("miwork programming in c", "programming in c"));
+        phrases.add(new Word("miwork learn python the hard way", "learn python in hard way"));
+        phrases.add(new Word("miwork spring boot", "spring boot"));
 
-        ArrayAdapter<String> phrasesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, phrases);
+        WordAdapter phrasesAdapter = new WordAdapter(this, phrases);
         ListView phrasesListview = new ListView(this);
         phrasesListview.setAdapter(phrasesAdapter);
         this.addContentView(phrasesListview, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
