@@ -53,16 +53,6 @@ public class WordAdapter extends ArrayAdapter<Word> {
             imgView.setVisibility(View.INVISIBLE);
         }
 
-        if (currentWord.hasAudSrc()) {
-            final MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), currentWord.getAudSrc());
-            listItemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mediaPlayer.start();
-                }
-            });
-        }
-
         return listItemView;
     }
 }
