@@ -19,7 +19,7 @@ public class NumbersActivity extends AppCompatActivity {
         list.add(new Word("one", "1", R.drawable.family_daughter));
         list.add(new Word("two", "2", R.drawable.family_father));
         list.add(new Word("three", "3", R.drawable.family_grandmother));
-        WordAdapter adapter = new WordAdapter(this, list);
+        WordAdapter adapter = new WordAdapter(this, list, R.color.category_numbers);
 
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);

@@ -21,7 +21,7 @@ public class PhrasesActivity extends AppCompatActivity {
         phrases.add(new Word("miwork learn python the hard way", "learn python in hard way"));
         phrases.add(new Word("miwork spring boot", "spring boot"));
 
-        WordAdapter phrasesAdapter = new WordAdapter(this, phrases);
+        WordAdapter phrasesAdapter = new WordAdapter(this, phrases, R.color.category_phrases);
         ListView phrasesListview = new ListView(this);
         phrasesListview.setAdapter(phrasesAdapter);
         this.addContentView(phrasesListview, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
