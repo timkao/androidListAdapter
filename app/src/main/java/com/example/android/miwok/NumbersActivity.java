@@ -15,6 +15,12 @@ import java.util.ArrayList;
 public class NumbersActivity extends AppCompatActivity {
 
     private MediaPlayer mMediaPlayer;
+    private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            releaseMediaPlayer();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +43,9 @@ public class NumbersActivity extends AppCompatActivity {
                     if (currentWord.hasAudSrc()) {
                         releaseMediaPlayer();
                         mMediaPlayer = MediaPlayer.create(NumbersActivity.this, currentWord.getAudSrc());
-                        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                            @Override
-                            public void onCompletion(MediaPlayer mediaPlayer) {
-                                releaseMediaPlayer();
-                            }
-                        });
+                        mMediaPlayer.setOnCompletionListener(onCompletionListener);
                         mMediaPlayer.start();
                     }
-
             }
         });
 
