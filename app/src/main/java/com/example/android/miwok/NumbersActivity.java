@@ -18,12 +18,12 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class NumbersActivity extends AppCompatActivity implements NumbersFragment.OnFragmentInteractionListener {
+public class NumbersActivity extends AppCompatActivity implements NumbersFragment.OnFragmentInteractionListeners {
 
     private final String TAG = "NumbersActivity";
 
     @Override
-    public void onFragmentInteraction(int position){
+    public void onFragmentItemClick(int position){
         //you can leave it empty
         Log.d(TAG, "we have position " + position);
     }
@@ -42,7 +42,7 @@ public class NumbersActivity extends AppCompatActivity implements NumbersFragmen
     public void onAttachFragment(Fragment fragment) {
         if (fragment instanceof NumbersFragment) {
             NumbersFragment numbersFragment = (NumbersFragment) fragment;
-            numbersFragment.setOnFragmentInteractionListener(this);
+            numbersFragment.setOnFragmentInteractionListeners(this); // turn my callback into the callback of my children fragment
         }
 
     }

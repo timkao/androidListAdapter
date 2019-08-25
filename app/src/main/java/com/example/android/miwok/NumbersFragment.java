@@ -18,16 +18,12 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NumbersFragment.OnFragmentInteractionListener} interface
+ * {@link NumbersFragment.OnFragmentInteractionListeners} interface
  * to handle interaction events.
- * Use the {@link NumbersFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class NumbersFragment extends Fragment {
 
-    OnFragmentInteractionListener callback;
-
-    private OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListeners mListeners;
 
     private MediaPlayer mMediaPlayer;
     private AudioManager mAudioManager;
@@ -121,7 +117,7 @@ public class NumbersFragment extends Fragment {
                         mMediaPlayer.start();
                     }
                 }
-                callback.onFragmentInteraction(position);
+                mListeners.onFragmentItemClick(position); // acts like a listener since it is inside a true listener
             }
         });
         return rootView;
@@ -130,8 +126,8 @@ public class NumbersFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnFragmentInteractionListeners) {
+            mListeners = (OnFragmentInteractionListeners) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -147,7 +143,7 @@ public class NumbersFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        mListeners = null;
     }
 
     /**
@@ -162,12 +158,11 @@ public class NumbersFragment extends Fragment {
      */
 
 
-    public void setOnFragmentInteractionListener(OnFragmentInteractionListener callback) {
-        this.callback = callback;
+    public void setOnFragmentInteractionListeners(OnFragmentInteractionListeners listeners) {
+        this.mListeners = listeners;
     }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(int position);
+    public interface OnFragmentInteractionListeners {
+        void onFragmentItemClick(int position);
     }
 }
