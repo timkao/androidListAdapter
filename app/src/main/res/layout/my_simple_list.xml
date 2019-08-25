@@ -4,11 +4,11 @@
     android:layout_marginLeft="16dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
@@ -16,29 +16,43 @@
             android:id="@+id/smallIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:src="@mipmap/ic_launcher"/>
 
-        <LinearLayout
-            android:id="@+id/textSection"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_marginLeft="8dp"
-            android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="8"
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/miwork"
-                tools:text="miwork sample"
+            <LinearLayout
+                android:id="@+id/textSection"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/english"
-                tools:text="default sample"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/miwork"
+                    tools:text="miwork sample"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/english"
+                    tools:text="default sample"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:src="@drawable/ic_play_arrow"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="right|center"/>
+
+        </FrameLayout>
 
     </LinearLayout>
 
