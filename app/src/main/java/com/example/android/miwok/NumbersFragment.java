@@ -25,6 +25,8 @@ import java.util.ArrayList;
  */
 public class NumbersFragment extends Fragment {
 
+    OnFragmentInteractionListener callback;
+
     private OnFragmentInteractionListener mListener;
 
     private MediaPlayer mMediaPlayer;
@@ -119,16 +121,10 @@ public class NumbersFragment extends Fragment {
                         mMediaPlayer.start();
                     }
                 }
+                callback.onFragmentInteraction(position);
             }
         });
         return rootView;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -165,7 +161,6 @@ public class NumbersFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
 
-    OnFragmentInteractionListener callback;
 
     public void setOnFragmentInteractionListener(OnFragmentInteractionListener callback) {
         this.callback = callback;
@@ -173,6 +168,6 @@ public class NumbersFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(int position);
     }
 }
