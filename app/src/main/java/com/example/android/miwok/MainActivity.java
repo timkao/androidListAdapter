@@ -17,6 +17,7 @@ package com.example.android.miwok;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,34 +25,59 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NumbersFragment.OnFragmentInteractionListeners, FamilyFragment.OnFragmentInteractionListeners {
+
+
+    private final String TAG = "MainActivity";
+
+    @Override
+    public void onFragmentItemClick(int position){
+        //you can leave it empty
+        Log.d(TAG, "Numbers have position " + position);
+    }
+
+    @Override
+    public void onFamilyFragmentItemClick(int position){
+        //you can leave it empty
+        Log.d(TAG, "Family have position " + position);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        TextView numbersView = (TextView) findViewById(R.id.numbers);
-        numbersView.setOnClickListener(new View.OnClickListener(){
+        // Find the view pager that will allow the user to swipe between fragments
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NumbersActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Create an adapter that knows which fragment should be shown on each page
+        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
 
-        TextView pharseView = (TextView) findViewById(R.id.phrases);
-        pharseView.setOnClickListener(new View.OnClickListener() {
+        // Set the adapter onto the view pager
+        viewPager.setAdapter(adapter);
 
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, PhrasesActivity.class);
-                startActivity(intent);
-            }
-        });
+//
+//        TextView numbersView = (TextView) findViewById(R.id.numbers);
+//        numbersView.setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, NumbersActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        TextView pharseView = (TextView) findViewById(R.id.phrases);
+//        pharseView.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, PhrasesActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 }
